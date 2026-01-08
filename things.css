@@ -1,0 +1,25 @@
+
+body {
+    background-color: #aaaaff
+}
+
+.fake {
+    width: 100%;
+    text-align: left;
+    font-family: monospace;
+}
+
+.r {
+    font-size: 50px;
+}
+
+.e {
+    background-color: white;
+    height: 150px
+}
+
+.f {
+    text-align: left;
+    background-color: white;
+    width: 30%
+}
