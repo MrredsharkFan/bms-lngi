@@ -40,11 +40,11 @@ function lngi(x = get_lngi_from_time(Date.now())) {
         }
         p = p+k[i]+1
     }
-    return [s,Math.min(p,50)]
+    return [s.slice(0,-4),Math.min(p,50)]
 }
 
 dt = 1767801600000
-dt = dt-86400000
+//dt = dt-86400000000
 function get_lngi_from_time(t) {
     t = t - dt
     t = Math.log10(t / 86400000+1) + 1
@@ -72,6 +72,17 @@ function case_closed() {
 function update() {
     document.getElementById("1").innerHTML = lngi()[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
-    document.getElementById("4").style.width = get_percent()+"%"
+    document.getElementById("4").style.width = get_percent() + "%"
+    document.getElementById("8").innerHTML = lngi(eval(document.getElementById("bruh").value))[0]
 }
-setInterval(update,1,1)
+
+setInterval(update, 10, 1)
+
+function format_time(t) {
+    if (t < 60) { return t.toFixed(3) + "s" }
+    if (t<3600) {return Math.floor(t/60)+"min "+format_time(t%60)}
+    if (t < 86400) { return Math.floor(t / 3600) + "h " + format_time(t % 360) }
+    if (t < 86400 * 365) { return Math.floor(t / 86400) + "d " + format_time(t % 86400) }
+    else {return (t/86400/365).toFixed(4)+" years"}
+
+}

@@ -1,6 +1,19 @@
+@keyframes a{
+    0% {background-position: 0% 0%;}
+    50% { background-position: 0% 200%;}
+    100% {background-position: 0% 400%;}
+}
+
+@keyframes sq{
+    0% {transform: translateY(0);}
+    100% {transform: translateY(700px);}
+}
+
 
 body {
-    background-color: #aaaaff
+    background-image: repeating-linear-gradient(0deg, #8866aa 0% 10%, #aa88cc 10% 20%);
+    background-size: 400% 400%;
+    animation: a 4s infinite linear;
 }
 
 .fake {
@@ -15,11 +28,52 @@ body {
 
 .e {
     background-color: white;
-    height: 150px
+    height: 200px;
+    position: sticky;
 }
 
 .f {
     text-align: left;
     background-color: white;
     width: 30%
+}
+
+.m {
+    background-color: white;
+    width: 80%;
+    height: auto;
+    object-position: 50px 50px;
+    text-align: right;
+    position: absolute;
+    left: 49%;
+}
+
+.st {
+    font-size:12px;
+}
+
+.m2 {
+    background-color: white;
+    position: absolute;
+    z-index: 67;
+    left: 0%;
+    width: 60%;
+    height: 20%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: purple;
+    position: absolute;
+    width: 90%;
+    left: 10%;
+}
+
+.container div {
+    background-color: #f1f1f1;
+    border: 3px solid black;
+    width: 90%;
+    height: 100px;
+    font-size: 16px;
 }
