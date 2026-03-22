@@ -1,3 +1,8 @@
+r = localStorage.getItem("bms-daily")
+
+
+
+
 function gen_init_bms(x) {
     s = ""
     e = ""
@@ -16,7 +21,7 @@ function lngi(x = get_lngi_from_time(Date.now())) {
     k = [1]
     l = 0
     m = 0
-    while (l < 50) {
+    while (l < 80) {
         if (j < 0.5){
             j = j * 2
             k.push(0)
@@ -43,16 +48,16 @@ function lngi(x = get_lngi_from_time(Date.now())) {
     return [s.slice(0,-4),Math.min(p,50)]
 }
 
-dt = 1767801600000
+dt = 1760430000000
 //dt = dt-86400000000
 function get_lngi_from_time(t) {
     t = t - dt
-    t = Math.log10(t / 86400000+1) + 1
+    t = Math.log10(t / 86400000+1)/Math.log10(15) + 1
     return t
 }
 
 function reverse_enginnering(x) {
-    return ((10 ** (x - 1)) - 1) * 86400000 + dt
+    return ((15 ** (x - 1)) - 1) * 86400000 + dt
 }
 
 function get_percent() {
@@ -72,11 +77,11 @@ function case_closed() {
 function update() {
     document.getElementById("1").innerHTML = lngi()[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
-    document.getElementById("4").style.width = get_percent() + "%"
-    document.getElementById("8").innerHTML = lngi(eval(document.getElementById("bruh").value))[0]
+    document.getElementById("4").style.width = get_percent() * 0.4 + "%"
+    mile_load()
 }
 
-setInterval(update, 10, 1)
+setInterval(update, 1, 1)
 
 function format_time(t) {
     if (t < 60) { return t.toFixed(3) + "s" }
