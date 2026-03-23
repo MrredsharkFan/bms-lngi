@@ -48,16 +48,16 @@ function lngi(x = get_lngi_from_time(Date.now())) {
     return [s.slice(0,-4),Math.min(p,50)]
 }
 
-dt = 1760430000000
+dt = 1767900000000
 //dt = dt-86400000000
 function get_lngi_from_time(t) {
     t = t - dt
-    t = Math.log10(t / 86400000+1)/Math.log10(15) + 1
+    t = Math.log10(t / 86400000 + 1) / Math.log10(10) + 1
     return t
 }
 
 function reverse_enginnering(x) {
-    return ((15 ** (x - 1)) - 1) * 86400000 + dt
+    return ((10 ** (x - 1)) - 1) * 86400000 + dt
 }
 
 function get_percent() {
@@ -84,10 +84,16 @@ function update() {
 setInterval(update, 1, 1)
 
 function format_time(t) {
+    if (t<0){return format_time(-t) + " ago"}
     if (t < 60) { return t.toFixed(3) + "s" }
     if (t<3600) {return Math.floor(t/60)+"min "+format_time(t%60)}
-    if (t < 86400) { return Math.floor(t / 3600) + "h " + format_time(t % 360) }
+    if (t < 86400) { return Math.floor(t / 3600) + "h " + format_time(t % 3600) }
     if (t < 86400 * 365) { return Math.floor(t / 86400) + "d " + format_time(t % 86400) }
     else {return (t/86400/365).toFixed(4)+" years"}
 
+}
+
+function getThen(t) {
+    var t = new Date(t + Date.now())
+    return t.toDateString()+" "+t.toLocaleTimeString()
 }
