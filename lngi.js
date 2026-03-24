@@ -98,7 +98,7 @@ function update() {
     document.getElementById("1").innerHTML = w[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
-    document.getElementById("fps").innerHTML = fps.toFixed(3)
+    document.getElementById("fps").innerHTML = `Running ${fps.toFixed(3)} fps`
     mile_load()
     fps = 1000/(Date.now()-last_update)
     last_update = Date.now()
