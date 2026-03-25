@@ -102,7 +102,7 @@ cM(3 + 1 / 16 + 1 / 32 + 1 / 1024 + 1 / 4096, "p(W_{M+1}) / p(I(1@[1,0])) / SRO"
 cM(3 + 1 / 16 + 1 / 32 + 1 / 1024 + 1 / 2048, "p(W_{M+w})")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 1024 + 1 / 2048 + 1 / 4096, "p(W_{M+w^2})")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 1024 + 1 / 2048 + 1 / 4096 + 1 / 8192, "p(I_{M+w})")
-cM(3 + 1 / 16 + 1 / 32 + 1 / 1024 + 1 / 2048 + 1 / 4096 + 1 / 8192 + 1 / 16384, "p(I(M,1))?")
+cM(3 + 1 / 16 + 1 / 32 + 1 / 1024 + 1 / 2048 + 1 / 4096 + 1 / 8192 + 1 / 16384, "p(I(W_{M+1},1))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 1024 + 1 / 2048 + 1 / 4096 + 1 / 8192 + 1 / 16384 + 1/65536, "p(W_{M_2+1})")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 512, "p(M_w)")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 512 + 1 / 8192, "p(M_{w^2})")
@@ -117,7 +117,7 @@ cM(3 + 1 / 16 + 1 / 32 + 1 / 512 + 1 / 1024, "p(N_w)")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 512 + 1 / 1024+1/4096+1/16384, "p(W_{[2-2-2-2]+1})")
 cM(3 + 1 / 16 + 1 / 32+1/256, "p((2-)^w) / p(p(T^T^w))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 128+1/(2**19), "p((2-)^(1,0)) / p(p(T^T^T)) / p(K)")
-cM(3 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 2048, "p(K^K^w)")
+cM(3 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 2048, "p(K^w) <i>Suggested by ComPlexy</i>")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 512, "p(W_{K+1}) / p(p(T^T^T+T))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 256, "p(W_{K+w}) / p(p(T^T^T+T*w))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 64, "p(K_w)")
@@ -133,16 +133,54 @@ cM(3 + 1 / 8+1/16, "p(>l>a.pW_{>a+2}(W_{>a+w})-stb.)")
 cM(3 + 1 / 4, "p(>l>a.W_{>a+2}-stb.) / p(p(T_w))")
 cM(3 + 1 / 4 + 1 / 1024, "p(>l>a.W_{>a+3}-stb.) / p(p(p(X_w)))")
 cM(3 + 1 / 4 + 1 / 512, "p(>l>a.W_{>a+w}-stb.) / lim(SAN) / SDO")
-cM(3 + 1 / 4 + 1 / 256 + 1/(2**19), "p(>l>a.W_{>a2}-stb.) / Old LDO")
+cM(3 + 1 / 4 + 1 / 256 + 1 / (2 ** 19), "p(>l>a.W_{>a2}-stb.) / Old LDO")
+cM(3 + 1 / 4 + 1 / 64, "p(>l>a.I_{a+1}-stb.)?")
 cM(3 + 1 / 2, "p(>a_w)")
 cM(3 + 1 / 2 + 1 / 4, "p(&beta;_w)")
 cM(3 + 1 / 2 + 1 / 4 + 1 / 8, "p(&gamma;_w)")
 cM(3 + 1 / 2 + 1 / 4 + 1 / 8 + 1 / 16, "p(&delta;_w)")
-cM(4, "p(w-P)")
-cM(4 + 1 / 16 + 1 / 16384, "ψ(ψ&sigma;(&sigma;_w))) / TO")
-cM(5, "p(S)")
-cM(6, "p(J(6))")
-cM(7, "p(J(7))")
+cM(4, "p(w-P) = p(pS(&sigma;S*w))")
+cM(4 + 1 / 2048, "ψ(ψS(σS*ω)*2)")
+cM(4 + 1 / 512 + 1 / 4096, "ψ(ψS(σS*ω+S))")
+cM(4 + 1 / 512 + 1 / 1024, "ψ(ψS(σS*ω+ψS_2(σS))+ψα_2(ψS(σS*ω)))")
+cM(4 + 1 / 256, "ψ(ψS(σS*ω+ψS_2(σS))+ψα_2(ψS(σS*ω+ψS_2(σS))+1))")
+cM(4 + 1 / 256 + 1 / (2 ** 19), "ψ(ψS(σS*ω+ψS_2(σS*ω))) [211 &rarr; 2111]")
+cM(4 + 1 / 256 + 1 / 4096, "ψ(ψS(σS*ω+ψS_2(σS*ω)+S))")
+cM(4 + 1 / 256 + 1 / 2048, "ψ(ψS(σS*ω+ψS_2(σS*ω)+ψS_2(σS))+ψα_2(ψS(σS*ω+ψS_2(σS*ω)+ψS_2(σS))+1))")
+cM(4 + 1 / 256 + 1 / 2048+1/16384, "ψ(ψS(σS*ω+ψS_2(σS*ω+ψS_2(σS*ω+S))))")
+cM(4 + 1 / 256 + 1 / 1024, "ψ(ψS(σS*ω+S_ω))")
+cM(4 + 1 / 256 + 1 / 1024 + 1 / 32768 + 1 / 262144 + 1 / (2 ** 35), "ψ(ψS(σS*(ω+1)+ψS_2(σS*(ω+1)+S)))")
+cM(4 + 1 / 256 + 1 / 1024 + 1 / 16384, "ψ(ψS(σS*(ω+1)+S_2))")
+cM(4 + 1 / 256 + 1 / 512, "ψ(ψS(σS*(ω2)))")
+cM(4 + 1 / 128, "ψ(ψS(σS*(ω^2)))")
+cM(4 + 1 / 128 + 1 / 1024 + (1 + 1 / 2 + 1 / 4 + 1 / 32 + 1 / (2 ** 26)) / (2 ** 23), "ψ(ψS(σS*>a))")
+cM(4 + 1 / 128 + 1 / 1024 + 1 / (2 ** 22), "ψ(ψS(σS*ψS(σS*ω)))")
+cM(4 + 1 / 128 + 1 / 1024 + 1 / (2 ** 21), "ψ(ψS(σS*S)) / p((1,0)-P) / SPFPO")
+cM(4 + 1 / 128 + 1 / 512 + 1 / (2 ** 23), "ψ(ψS(σS*S+ψS_2(σS*S+ψS_2(σS*S))))")
+cM(4 + 1 / 128 + 1 / 256, "ψ(ψS(σS*S*ω))")
+cM(4 + 1 / 64, "ψ(ψS(σS*S*ω+S_2))")
+cM(4 + 1 / 64 + 1 / 256, "ψ(ψS(σS*S*ω+ψS_3(σS))+Ω(α+1)*ω)")
+cM(4 + 1 / 64 + 1/128, "ψ(ψS(σS*S*ω+ψS_3(σS))+ψα_2(ψS(σS*ω)))")
+cM(4 + 1 / 32, "ψ(ψS(σS*S*ω+ψS_3(σS))+ψα_2(ψS(σS*S*ω+ψS_3(σS))+1))")
+cM(4 + 1 / 32 + 1 / (2 ** 22), "ψ(ψS(σS*S*ω+ψS_3(σS*ω)))")
+cM(4 + 1 / 32 + 1 / (2 ** 21), "ψ(ψS(σS*S*ω+ψS_3(σS*S)))")
+cM(4 + 1 / 32 + 1 / 128, "ψ(ψS(σS*S*ω+ψS_3(σS*S_w)))")
+cM(4 + 1 / 32 + 1 / 64, "ψ(ψS(σS*S*ω+ψ_{ψS_3(σS*(S+1))}(ψθS(σθS*(θS+ω)))))")
+cM(4 + 1 / 16, "ψ(ψS(σS*S*ω+ψS_3(σS*S*ω)))")
+cM(4 + 1 / 16 + 1 / 16384, "ψ(ψ&sigma;(&sigma;_w))) / ψ(ψS(σS*S*ω+ψS_3(σS*S*ω+1))) / TO")
+cM(4 + 1 / 16 + 1 / 128, "ψ(ψS(σS*S*ω+S_3))")
+cM(4 + 1 / 16 + 1 / 32, "ψ(ψS(σS*S*ω+ψS_4(σS*S*ω)))")
+cM(4 + 1 / 16 + 1 / 32 + 1/64, "ψ(ψS(σS*S*ω+ψS_5(σS*S*ω)))")
+cM(4 + 1 / 8, "ψ(ψS(σS*S*ω+S_w))")
+cM(4 + 1 / 8 + 1 / 1024, "ψ(ψS(σS*S*ω+S_{ω^2}))")
+cM(4 + 1 / 8 + 1 / 1024 + 1 / 2048, "ψ(ψS(σS*(S*ω+1)+ψS_2(σS*(S*ω+1)+ψS_2(σS*(S*ω+1))+1)))")
+cM(4 + 1 / 8 + 1 / 512, "ψ(ψS(σS*(S*ω+1)+S_2))")
+cM(4 + 1 / 8 + 1 / 32, "ψ(ψS(σS*(S*ω+1)+S_ω))")
+cM(4 + 1 / 8 + 1 / 16, "ψ(ψS(σS*(S*ω+ω)))")
+cM(4 + 1 / 4, "ψ(ψS(σS*(S*ω^2)))")
+cM(5, "ψ(ψA([1,1]A*ω))")
+cM(6, "ψ(H^H^H^ω)")
+cM(7, "ψ(H^H^H^H^ω)")
 
 function cM(pos, other_notations) {
     milestones.push([pos, lngi(pos)[0], other_notations.replaceAll("p", "&psi;").replaceAll("W", "&Omega;").replaceAll("w", "&omega;").replaceAll(">a", "&alpha;").replaceAll(">l", "&lambda;").replaceAll("k", "&kappa;")])
@@ -150,13 +188,13 @@ function cM(pos, other_notations) {
 
 function mile_init() {
     for (i = 0; i < milestones.length; i++) {
-        document.getElementById("6").innerHTML = document.getElementById("6").innerHTML + `<div style="color: #ffe; width: ${100 + 200 / (3 + (milestones[i][0] % 1).toString(2).length)}%" id="md${i}">#${i+1} | <b style="font-size: 18px">${milestones[i][2]}</b><br><span style="font-size: small">${milestones[i][1]}<br>Achieved in ${getThen((reverse_enginnering(milestones[i][0]) - Date.now()))} (<span id="m${i}"></span>)</span></div>`
+        document.getElementById("6").innerHTML = document.getElementById("6").innerHTML + `<div style="color: #ffe; width: 100%" id="md${i}">#${i+1} | <b style="font-size: 18px">${milestones[i][2]}</b><br><span style="font-size: small">${milestones[i][1]}<br>Achieved in ${getThen((reverse_enginnering(milestones[i][0]) - Date.now()))} (<span id="m${i}"></span>)</span></div>`
     }
 }
 
 function mile_load() {
     var j = Math.max(Math.floor(window.scrollY / 100 - 2), 0)
-    for (i = j; i < milestones.length&&i<Math.floor(j+window.innerHeight/100+4); i++) {
+    for (i = j; i < milestones.length && i < Math.floor(j + window.innerHeight / 100 + 4); i++) {
         document.getElementById(`m${i}`).innerHTML = format_time((reverse_enginnering(milestones[i][0]) - Date.now()) / 1000)
         const r = document.getElementById(`md${i}`)
         if (reverse_enginnering(milestones[i][0]) < Date.now()) {
@@ -174,6 +212,12 @@ function mile_show() {
     console.log(document.getElementById("main_text").style.left)
     document.getElementById("main_text").style.left = 55 - (1-p.style.opacity) * 47.5 + "%" //55-7.5 = 47.5
     document.getElementById("main_text").style.width = 37.5 + (1-p.style.opacity) * 47.5 + "%"
+}
+
+function cred_show() {
+    const p = document.getElementById(`credits`)
+    p.style.opacity = 1 - p.style.opacity
+    p.style.top = `${20+(1 - p.style.opacity) * 150}%`
 }
 
 mile_init()

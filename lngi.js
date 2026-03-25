@@ -111,10 +111,10 @@ setInterval(update, 1, 1)
 function format_time(t) {
     if (t<0){return format_time(-t) + " ago"}
     if (t < 60) { return t.toFixed(2) + "s" }
-    if (t<3600) {return Math.floor(t/60)+"min "+format_time(t%60)}
+    if (t < 3600) { return Math.floor(t / 60) + "min " + format_time(t % 60) }
     if (t < 86400) { return Math.floor(t / 3600) + "h " + format_time(t % 3600) }
     if (t < 86400 * 365) { return Math.floor(t / 86400) + "d " + format_time(t % 86400) }
-    else { return Math.floor(t / 86400 /365) + "y " + format_time(t % (86400*365)) }
+    else { return Math.floor(t / 86400 / 365) + "y " + format_time(t % (86400 * 365)) }
 
 }
 
