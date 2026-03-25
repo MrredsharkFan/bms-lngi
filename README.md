@@ -1,8 +1,6 @@
-[BMS LNGI]
-You kind of just, watch a bms ordinal rise globally
-will add more features in the future
+Welcome to javascript.
+A successor to a scratch project
 
-What I might do
--Readd all features in the scratch project
--RTNTE mode (safer)
--autoanalysis (solarzone moment, i guess)
+If you somehow got here:
+go here to the main project
+(https://mrredsharkfan.github.io/bms-lngi/interface.html)

@@ -1,32 +1,48 @@
+@keyframes droplet {
+    from {transform: translateY(-1000%)}
+    to {transform: translateY(4000%)}
+}
+
 body {
-    background-color: #44f;
-    font-family: "Comic Sans MS","Roboto";
+    background-image: linear-gradient(#000,#026);
+    height: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: "Saira Medium";
 }
 
 .fake {
     width: 40%;
-    text-align: right;
+    text-align: left;
 }
 
 .r {
     font-size: 50px;
 }
 
-.e {
-    background-color: white;
+.main_text {
+    border-radius: 24px;
+    outline-color: aliceblue;
+    outline-width: 10px;
+    outline-style: solid;
+    padding: 1%;
+    background-color: rgba(255,255,255,0.125);
     height: 200px;
     position: fixed;
-    width: 40%;
-    height: 70%;
-    left: 55%;
-    top: 12%;
+    height: 50%;
+    top: 30%;
+    color: white;
+    transition-duration: 200ms;
 }
 
-.f {
+.progress_bar {
     text-align: left;
     background-color: white;
     position: fixed;
     left: 55%;
+    top:20%;
+    height: 2%;
+    border-radius: 10%;
 }
 
 .m {
@@ -34,7 +50,6 @@ body {
     height: 100px;
     text-align: right;
     position: fixed;
-    left: 49%;
 }
 
 .st {
@@ -45,13 +60,31 @@ body {
     background-color: white;
     position: absolute;
     z-index: 67;
-    left: 0%;
+    left: 2%;
     height: 10%;
 }
 
+.container {
+    position: absolute;
+    top: 100px;
+    transition-duration: 200ms;
+    opacity: 1;
+}
+
 .container div {
-    border: 3px solid white;
-    height: 94px;
+    border: 5px solid white;
+    height: 70px;
+    padding: 10px;
     font-size: 15px;
     text-align: left;
+}
+
+.droplet {
+    animation-name: droplet;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    position: absolute;
+    background-color: #ffffff88;
+    width: 0.2%;
+    height: 3%
 }

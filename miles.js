@@ -11,7 +11,7 @@ function text_color(c) {
 
 milestones = []
 
-cM(2.875, "p(W_4)<br>**Remember, less bright = less relevant")
+cM(2.875, "p(W_4)      **Remember, less bright = less relevant")
 cM(2.875 + 1 / 4096, "p(W_4+W_2)")
 cM(2.875 + 1 / 2048, "p(W_4+W_3)")
 cM(2.875 + 1 / 1024, "p(W_4*2)")
@@ -24,9 +24,16 @@ cM(2.875 + 1 / 64+1/128, "p(W_4*p3(W_4))")
 cM(2.875 +1/32, "p(W_4^2)")
 cM(2.875 + 1 / 16, "p(W_5)")
 cM(2.875 + 1 / 16 + 1 / 64, "p(W_5^2)")
+cM(2.875 + 1 / 16 + 1 / 64 + 1 / 256 + 1/512, "p(W_5^p4(W_5))")
 cM(2.875 + 1 / 16 + 1 / 64+1/128, "p(W_5^W_5)")
 cM(2.875 + 1 / 16 + 1 / 32, "p(W_6)")
-cM(2.875 + 1 / 16 + 1 / 32+1/64, "p(W_7)")
+cM(2.875 + 1 / 16 + 1 / 32 + 1 / 128, "p(W_6^2)")
+cM(2.875 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 512, "p(W_6^W_5)")
+cM(2.875 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 512 + 1 / 1024, "p(W_6^p5(W_6))")
+cM(2.875 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 256, "p(W_6^W_6)")
+cM(2.875 + 1 / 16 + 1 / 32 + 1 / 64, "p(W_7)")
+cM(2.875 + 1 / 16 + 1 / 32 + 1 / 64 + 1 / 128, "p(W_8)")
+cM(2.875 + 1 / 16 + 1 / 32 + 1 / 64 + 1 / 128 + 1/256, "p(W_9)")
 cM(3, "p(W_w) [BO]")
 cM(3 + 1 / 256, "p(W_w+W)")
 cM(3 + 1 / 256 + 1 / 512, "p(W_w+p1(W_w))")
@@ -114,7 +121,9 @@ cM(3 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 2048, "p(K^K^w)")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 512, "p(W_{K+1}) / p(p(T^T^T+T))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 128 + 1 / 256, "p(W_{K+w}) / p(p(T^T^T+T*w))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 64, "p(K_w)")
-cM(3 + 1 / 16 + 1 / 32 + 1 / 64 + 1 / 1024, "p(1-3-3) / p(p(T^T^T^2*w))?")
+cM(3 + 1 / 16 + 1 / 32 + 1 / 64 + 1 / 4096, "p((3 2-)^w) / p(p(T^T^(T*w)))?")
+cM(3 + 1 / 16 + 1 / 32 + 1 / 64 + 1/2048 + 1/(2**23), "p(3-3) / p(p(T^T^T^2))")
+cM(3 + 1 / 16 + 1 / 32 + 1 / 64 + 1 / 1024, "p(1-3-3) / p(p(T^T^T^2*w))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 64 + 1 / 512, "p((3-)^w) / p(p(T^T^T^w))")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 64 + 1 / 256 + 1/(2**23), "p((3-)^(1,0)) / p(p(T^T^T^T)) / p(k)")
 cM(3 + 1 / 16 + 1 / 32 + 1 / 64+1/128, "p(k_w)")
@@ -141,7 +150,7 @@ function cM(pos, other_notations) {
 
 function mile_init() {
     for (i = 0; i < milestones.length; i++) {
-        document.getElementById("6").innerHTML = document.getElementById("6").innerHTML + `<div style="color: ${text_color(milestones[i][0])}; width: ${100 + 50 / (1 + (milestones[i][0] % 1).toString(2).length)}%" id="md${i}">#${i} | <b style="font-size: 18px">${milestones[i][2]}</b><br><span style="font-size: small">${milestones[i][1]}<br>Achieved in ${getThen((reverse_enginnering(milestones[i][0]) - Date.now()))} (<span id="m${i}"></span>)</span></div>`
+        document.getElementById("6").innerHTML = document.getElementById("6").innerHTML + `<div style="color: #ffe; width: ${100 + 200 / (3 + (milestones[i][0] % 1).toString(2).length)}%" id="md${i}">#${i+1} | <b style="font-size: 18px">${milestones[i][2]}</b><br><span style="font-size: small">${milestones[i][1]}<br>Achieved in ${getThen((reverse_enginnering(milestones[i][0]) - Date.now()))} (<span id="m${i}"></span>)</span></div>`
     }
 }
 
@@ -149,12 +158,22 @@ function mile_load() {
     var j = Math.max(Math.floor(window.scrollY / 100 - 2), 0)
     for (i = j; i < milestones.length&&i<Math.floor(j+window.innerHeight/100+4); i++) {
         document.getElementById(`m${i}`).innerHTML = format_time((reverse_enginnering(milestones[i][0]) - Date.now()) / 1000)
+        const r = document.getElementById(`md${i}`)
         if (reverse_enginnering(milestones[i][0]) < Date.now()) {
-            document.getElementById(`md${i}`).style["backgroundColor"] = `#00${mile_color(milestones[i][0],2) }00`
+            r.style["backgroundColor"] = `#00${mile_color(milestones[i][0], 2)}00a0`
         } else {
-            document.getElementById(`md${i}`).style["backgroundColor"] = `#${mile_color(milestones[i][0],3)}`
+            r.style["backgroundColor"] = `#${mile_color(milestones[i][0], 6)}a0`
         }
     }
+}
+
+function mile_show() {
+    const p = document.getElementById(`6`)
+    p.style.opacity = 1 - p.style.opacity
+    p.style.left = `${(1-p.style.opacity)*-50}%`
+    console.log(document.getElementById("main_text").style.left)
+    document.getElementById("main_text").style.left = 55 - (1-p.style.opacity) * 47.5 + "%" //55-7.5 = 47.5
+    document.getElementById("main_text").style.width = 37.5 + (1-p.style.opacity) * 47.5 + "%"
 }
 
 mile_init()
