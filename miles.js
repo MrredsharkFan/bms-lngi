@@ -214,10 +214,18 @@ function mile_show() {
     document.getElementById("main_text").style.width = 37.5 + (1-p.style.opacity) * 47.5 + "%"
 }
 
-function cred_show() {
+function cred_show(c=0) {
     const p = document.getElementById(`credits`)
     p.style.opacity = 1 - p.style.opacity
-    p.style.top = `${20+(1 - p.style.opacity) * 150}%`
+    p.style.top = `${20 + (1 - p.style.opacity) * 150}%`
+    if (document.getElementById(`settings`).style.opacity == 1 && c==0) { set_show(1) }
+}
+
+function set_show(c=0) {
+    const p = document.getElementById(`settings`)
+    p.style.opacity = 1 - p.style.opacity
+    p.style.top = `${20 + (1 - p.style.opacity) * 150}%`
+    if (document.getElementById(`credits`).style.opacity == 1 && c==0){cred_show(1)}
 }
 
 mile_init()

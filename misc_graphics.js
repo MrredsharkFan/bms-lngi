@@ -9,3 +9,19 @@ function summon_droplets() {
 }
 
 summon_droplets()
+
+function font_change() {
+    document.getElementById("body").style["fontFamily"] = document.getElementById("font").value
+}
+
+
+fonts = ["system-ui", "Trispace","Ubuntu","Saira", "Monospace", "Arial", "Wingdings", "Cursive", "Sora","Times New Roman", "Helvetica", "Lucida Console", "Courier New", "Papyrus","Brush Script MT"]
+
+function generate_fonts() {
+    for (i = 0; i < fonts.length;i++) {
+        console.log(fonts[i])
+        document.getElementById("font-buttons").innerHTML = document.getElementById("font-buttons").innerHTML+`<button style="font-family: ${fonts[i]}" class="font_button" onclick='document.getElementById("font").value = "${fonts[i]}"'>${fonts[i]}</button>`
+    }
+}
+
+generate_fonts()

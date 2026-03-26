@@ -1,4 +1,7 @@
-r = localStorage.getItem("bms-daily")
+
+
+if (null == localStorage.getItem("bms-font")) { document.getElementById("font").value = "system-ui" }
+else { document.getElementById("font").value = localStorage.getItem("bms-font") }
 to = new Date().getTimezoneOffset()
 
 
@@ -102,6 +105,8 @@ function update() {
     mile_load()
     fps = 1000/(Date.now()-last_update)
     last_update = Date.now()
+    font_change()
+    saveSettings()
 }
 
 fps = 0
@@ -116,6 +121,10 @@ function format_time(t) {
     if (t < 86400 * 365) { return Math.floor(t / 86400) + "d " + format_time(t % 86400) }
     else { return Math.floor(t / 86400 / 365) + "y " + format_time(t % (86400 * 365)) }
 
+}
+
+function saveSettings() {
+    localStorage.setItem("bms-font",document.getElementById("font").value)
 }
 
 function getThen(t) {

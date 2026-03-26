@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <script src="matrix.js"></script>
-    <script src="bm4.js"></script>
-    <script src="lngi.js"></script>
-    <script src="array.js"></script>
+
     <head>
        <link rel="stylesheet" href="things.css">
        <title>BMS LNGI (js edition)</title>
+
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trispace|Ubuntu|Saira|Sora">
     </head>
 
     <main>
-        <body>
+        <body id="body" style="font-family: system-ui">
             <div class="fake">
                 <div id="droplet" style="position: fixed; width: 100%; height: 100%"></div>
                 <div class="main_text" style="left: 55%; width: 37.5%" id="main_text">
@@ -24,10 +23,11 @@
             </div>
             <div style="text-align: right; position: fixed; z-index: 999999; background-color: #111122cc; width: 103%; height: 10%; top: -1%; left: -1%; outline-color: white; outline-style: solid;">
                 <br><span style="position: absolute;text-align: right; color: white; right: 4%">You can scroll to view milestones. <br>Click the buttons to open/close the respective tabs.</span>
-                <button class="tab_btn" style="left: 3%" onclick="mile_show()">Milestones</button>
-                <button class="tab_btn" style="left: 28%" onclick="cred_show()">Credits</button>
+                <button class="tab_btn" style="left: 5%" onclick="mile_show()">Milestones</button>
+                <button class="tab_btn" style="left: 16%" onclick="cred_show()">Credits</button>
+                <button class="tab_btn" style="left: 27%" onclick="set_show()">Settings</button>
             </div>
-            <div id="credits" class="cred" style="top: 120%; opacity: 0">
+            <div id="credits" class="cred" style="top: 120%; opacity: 0; background-color: #334455cc;">
                 <span style="color: #fff"><b style="font-size: 50px">BMS LNGI</b> (Also as: Bashicu Matrix System: Large Numbers Gradually Inceasing)<br>
                 made by Termiunsfinity / SmallStergentOrdinal / 088123665 / Mrredsharkfan<br>BMS expander by Naruyoko<br>
                 Made to improve HTML+CSS+js skill and as a transition from Scratch<hr></span>
@@ -39,8 +39,17 @@
                 LNGI videos<br>
                 dshamlin's global number names (techinally a remix)</span>
             </div>
+            <div class="cred" id="settings" style="top: 120%; opacity: 0; background-color: #112266cc">
+                <span style="font-size: 50px; color: #fff">Settings</span><br><br>
+                <span style="color: #ccf"><b>Text font: </b><input id="font" value="system-ui"></input><br>Or, choose from one of the presets.</span><br>
+                <div id="font-buttons" style="width: 100%; height: 50%; left: 15%"></div><hr>
+            </div>
         </body>
     </main>
+    <script src="matrix.js"></script>
+    <script src="bm4.js"></script>
+    <script src="lngi.js"></script>
+    <script src="array.js"></script>
     <script src="miles.js"></script>
     <script src="misc_graphics.js"></script>
 </html>
