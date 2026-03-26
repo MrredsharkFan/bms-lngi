@@ -15,7 +15,7 @@ function font_change() {
 }
 
 
-fonts = ["system-ui", "Trispace","Ubuntu","Saira", "Monospace", "Arial", "Wingdings", "Cursive", "Sora","Helvetica","Papyrus"]
+fonts = ["system-ui","Sofia", "Trispace","Ubuntu","Saira", "Monospace", "Arial", "Wingdings", "Cursive", "Sora","Helvetica","Papyrus","Noto Sans","Roboto Condensed"]
 
 function generate_fonts() {
     for (i = 0; i < fonts.length;i++) {
