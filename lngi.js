@@ -443,17 +443,14 @@ function update() {
     last_update = Date.now()
     font_change()
     saveSettings()
-} catch (error) {
-  window.onerror = function(message, source, lineno, colno, error) {
-  window.alert(`Error: ${message}\nFile: ${source}\nLine: ${lineno}`);
-  return true; // Prevents the error from appearing in the browser console
-};
+} catch (err) {
+    window.alert("An error occurred!\n" + err + "\n" + err.stack);
 }
 }
 
 fps = 0
 last_update = Date.now()
-setInterval(update, 1, 1)
+setInterval(update, 1000/30)
 
 function format_time(t) {
     if (t<0){return format_time(-t) + " ago"}
