@@ -457,7 +457,7 @@ function update() {
     font_change()
     saveSettings()
 } catch (error) {
-  alert("An error occurred: " + error.message);
+  window.alert("An error occurred: " + error.message);
   console.error(error); // Still logs to console for debugging
 }
 }
