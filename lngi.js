@@ -438,12 +438,12 @@ function update() {
     document.getElementById("1").innerHTML = w[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
-    calculate()
     mile_load()
     fps = 1000/(Date.now()-last_update)
     last_update = Date.now()
     font_change()
     saveSettings()
+    calculate()
 } catch (error) {
   window.alert("An error occurred: " + error.message);
   console.error(error); // Still logs to console for debugging
