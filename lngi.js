@@ -96,7 +96,8 @@ function update() {
   try {
   // Code that might throw an error
       nea = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
-    calculate(nea[0])
+      window.alert(JSON.stringify(nea))
+    //calculate(nea[0])
     document.getElementById("1").innerHTML = nea[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
