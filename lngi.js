@@ -443,7 +443,6 @@ function update() {
     last_update = Date.now()
     font_change()
     saveSettings()
-    calculate()
 } catch (error) {
   window.onerror = function(message, source, lineno, colno, error) {
   window.alert(`Error: ${message}\nFile: ${source}\nLine: ${lineno}`);
