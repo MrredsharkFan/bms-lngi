@@ -328,10 +328,9 @@ function _skipped(M){
   return S;
 }
 
-function calculate(){
+function calculate(n){
   //if(document.getElementById('input').value==last){return;}
-  let M=document.getElementById('1').value;
-  M=eval('['+M.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
+  let M=eval('['+n.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
   M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
   document.getElementById('ord').innerHTML=display(_o(M));
 }
