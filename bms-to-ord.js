@@ -327,10 +327,3 @@ function _skipped(M){
   for(let i=0;i<M.length;i++){if(eq(M[i],[0,0,0])){S=S.concat(skipped(M,i));}}
   return S;
 }
-
-function calculate(n){
-  //if(document.getElementById('input').value==last){return;}
-  let M=eval('['+n.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
-  M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
-  document.getElementById('ord').innerHTML=display(_o(M));
-}
