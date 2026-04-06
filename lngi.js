@@ -92,12 +92,16 @@ function case_closed() {
     return ((reverse_enginnering(s)-Date.now())/1000).toFixed(3)
 }
 
+function calculate(n){
+  //if(document.getElementById('input').value==last){return;}
+  let M=eval('['+n.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
+  return display(_o(M));
+}
 function update() {
   try {
   // Code that might throw an error
       nea = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
-      window.alert(JSON.stringify(nea))
-    //calculate(nea[0])
+      document.getElementById("ord").innerHTML = calculate(nea[0]);
     document.getElementById("1").innerHTML = nea[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
