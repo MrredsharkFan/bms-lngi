@@ -330,13 +330,8 @@ function _skipped(M){
 
 function calculate(){
   //if(document.getElementById('input').value==last){return;}
-  let M=(document.getElementById('1').value).replaceAll(' ','');
-  try{M=eval('['+M.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');}
+  let M=document.getElementById('1').value;
+  M=eval('['+M.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
   M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
-  let A=[...Array(M.length).keys()].map(x=>D(M,x));
-  if(Math.max(...A)>70){
-    console.error('Too complex');
-    return;
-  }
   document.getElementById('ord').innerHTML=display(_o(M));
 }
