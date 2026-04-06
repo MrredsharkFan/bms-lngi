@@ -333,10 +333,9 @@ function _skipped(M){
   return S;
 }
 
-function calculate(){
+function calculate(n){
   //if(document.getElementById('input').value==last){return;}
-  let M=document.getElementById('1').value;
-  M=eval('['+M.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
+  M=eval('['+n.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
   M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
   document.getElementById('ord').innerHTML=_o(M);
 }
@@ -434,8 +433,9 @@ function case_closed() {
 function update() {
   try {
   // Code that might throw an error
-      w = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
-    document.getElementById("1").innerHTML = w[0]
+      nea = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
+    calculate(nea[0])
+    document.getElementById("1").innerHTML = nea[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
     mile_load()
