@@ -332,7 +332,6 @@ function calculate(){
   //if(document.getElementById('input').value==last){return;}
   let M=document.getElementById('1').value.replaceAll(' ','');
   try{M=eval('['+M.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');}
-  catch(e){return;}
   M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
   let A=[...Array(M.length).keys()].map(x=>D(M,x));
   if(Math.max(...A)>70){
@@ -340,10 +339,6 @@ function calculate(){
     return;
   }
   document.getElementById('ord').innerHTML=display(_o(M));
-  let u=[...Array(M.length).keys()].map(x=>U(M,x)[1]);
-  let u1=[...Array(M.length).keys()].filter(x=>x!=null).map(x=>U(M,x)[1]*(-1)**U(M,x)[0]);
-  let s=_skipped(M);
-  let m=[i.toString(),'('+M[i][0]+',',M[i][1]+',',M[i][2]+')',display(o(M,i)),display(v(M,i)),(U(M,i)[0]?U(M,i)[1].toString()+'*'.repeat(U(M,i)[0]-1):''),C(M,i)];
 }
   
 function createTable(X){return X.map(x=>'<tr>'+x.map(y=>'<td>'+y+'</td>').join('')+'</tr>').join('');}
