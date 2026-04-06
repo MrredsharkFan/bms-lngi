@@ -330,7 +330,7 @@ function _skipped(M){
 
 function calculate(){
   //if(document.getElementById('input').value==last){return;}
-  let M=document.getElementById('1').value.replaceAll(' ','');
+  let M=(document.getElementById('1').value).replaceAll(' ','');
   try{M=eval('['+M.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');}
   M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
   let A=[...Array(M.length).keys()].map(x=>D(M,x));
@@ -448,6 +448,7 @@ function update() {
     document.getElementById("1").innerHTML = w[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
+    calculate()
     mile_load()
     fps = 1000/(Date.now()-last_update)
     last_update = Date.now()
