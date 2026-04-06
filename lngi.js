@@ -337,7 +337,7 @@ function calculate(n){
   //if(document.getElementById('input').value==last){return;}
   M=eval('['+n.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
   M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
-  document.getElementById('ord').innerHTML=_o(M);
+  document.getElementById('ord').innerHTML=display(_o(M));
 }
 
 function gen_init_bms(x) {
