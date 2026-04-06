@@ -338,7 +338,7 @@ function calculate(){
   let M=document.getElementById('1').value;
   M=eval('['+M.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
   M=M.map(x=>{let y=x.slice();while(y.length<3){y.push(0)}return y;});
-  document.getElementById('ord').innerHTML=display(_o(M));
+  document.getElementById('ord').innerHTML=_o(M);
 }
 
 function gen_init_bms(x) {
@@ -445,8 +445,10 @@ function update() {
     saveSettings()
     calculate()
 } catch (error) {
-  window.alert("An error occurred: " + error.message);
-  console.error(error); // Still logs to console for debugging
+  window.onerror = function(message, source, lineno, colno, error) {
+  window.alert(`Error: ${message}\nFile: ${source}\nLine: ${lineno}`);
+  return true; // Prevents the error from appearing in the browser console
+};
 }
 }
 
