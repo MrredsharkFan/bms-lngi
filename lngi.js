@@ -98,9 +98,7 @@ function calculate(n){
   return display(_o(M));
 }
 function update() {
-  try {
-  // Code that might throw an error
-      nea = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
+  nea = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
       document.getElementById("ord").innerHTML = calculate(nea[0]);
     document.getElementById("1").innerHTML = nea[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
@@ -110,9 +108,6 @@ function update() {
     last_update = Date.now()
     font_change()
     saveSettings()
-} catch (err) {
-    window.alert("An error occurred!\n" + err + "\n" + err.stack);
-}
 }
 
 fps = 0
