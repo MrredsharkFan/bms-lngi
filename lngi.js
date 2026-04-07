@@ -66,7 +66,7 @@ function lngi(x = get_lngi_from_time(Date.now())) {
 
 dt = 1767900000000
 //dt = dt-8640000000
-dt = Date['UTC'](2026, 3, 2) - 86400 * 1000 * 100 + to * 1000 * 60
+dt = Date['UTC'](2026, 2, 16) - 86400 * 1000 * 100 + to * 1000 * 60
 //dt = dt-2000000000
 function get_lngi_from_time(t) {
     var t = t - dt
@@ -98,6 +98,7 @@ function calculate(n){
   return display(_o(M));
 }
 function update() {
+    try {
   nea = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
       document.getElementById("ord").innerHTML = calculate(nea[0]);
     document.getElementById("1").innerHTML = nea[0]
@@ -108,6 +109,9 @@ function update() {
     last_update = Date.now()
     font_change()
     saveSettings()
+    } catch (err) {
+    window.alert(err + "\n" + err.stack)
+    }
 }
 
 fps = 0
