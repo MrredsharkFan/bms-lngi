@@ -58,21 +58,21 @@ function add(x,y){
   return z;
 }
 
-function sub(x,y){
+function subtract(x,y){
   if(x=='0'){return '0';}
   if(y=='0'){return x;}
   if(lt(firstTerm(y)[0],firstTerm(x)[0])){return x;}
-  return sub(firstTerm(x)[1],firstTerm(y)[1]);
+  return subtract(firstTerm(x)[1],firstTerm(y)[1]);
 }
 
 function sua(x){return split(x,'P(0)');}
 
 function exp(a){
-  if(a[0]=='P'){return `P(${sub(a,'P(0)')})`;}
+  if(a[0]=='P'){return `P(${subtract(a,'P(0)')})`;}
   if(lt(a,'p(p(P(0)))')){return `p(${a})`;}
   let [x,y]=sua(arg(a));
   let p=split(y,`p(${add(x,'P(0)')})`)[0];
-  return 'p('+add(x,add(p,sub(a,'p('+add(x,p)+')')))+')';
+  return 'p('+add(x,add(p,subtract(a,'p('+add(x,p)+')')))+')';
 }
 
 function log(a){
@@ -89,7 +89,7 @@ function log(a){
 
 function div(a,b){ // only works when b is a.p.
   if(lt(a,b)){return '0';}
-  return add(exp(sub(log(a),log(b))),div(firstTerm(a)[1],b));
+  return add(exp(subtract(log(a),log(b))),div(firstTerm(a)[1],b));
 }
 
 function mul(a,b){ // only works when a is a.p.
@@ -112,7 +112,7 @@ function op(x){ // "does it need parentheses when you write something*x"
   if(f=='p(0)'){f='p(p(0))';g=log(x);h=exp(g);}
   else{g=div(log(x),f);h=exp(mul(f,g))}
   let c=div(x,h);
-  let d=sub(x,mul(h,div(x,h)));
+  let d=subtract(x,mul(h,div(x,h)));
   if(d!='0'){return true;}
   return false;
 }
@@ -129,7 +129,7 @@ function display(x,y){
   if(f=='p(0)'){f='p(p(0))';g=log(x);h=firstTerm(x)[0];}
   else{g=div(log(x),f);h=`${f=='P(0)'?'P':'p'}(${split(arg(x),f)[0]})`;}
   let c=div(x,h);
-  let d=sub(x,mul(h,div(x,h)));
+  let d=subtract(x,mul(h,div(x,h)));
   //console.log(f,g,h,'',c,d);
   if(c=='p(0)'&&d=='0'){
     if(exp(x)!=x){
@@ -157,11 +157,11 @@ function display(x,y){
     if(lastTerm(arg(x))[1][0]=='P'&&b!='0'){
       if(m=='p(0)'){s='Ω';}
       else if(m=='p(0)+p(0)'){s='I';}
-      else if(lt(m,'p(P(P(p(P(P(P(0)))))))')){s=`I(${display(sub(m,'p(0)+p(0)'))},x)`;}
+      else if(lt(m,'p(P(P(p(P(P(P(0)))))))')){s=`I(${display(subtract(m,'p(0)+p(0)'))},x)`;}
       else if(m=='P(0)'){s='M';}
       if(s==''){return `ψ(${display(arg(x))})`;}
       if(l=='p(0)'){return s.replace('x','0');}
-      if(s.includes('x')){return s.replace('x',display(sub(l,'p(0)')));}
+      if(s.includes('x')){return s.replace('x',display(subtract(l,'p(0)')));}
       return `${s}<sub>${display(l)}</sub>`;
     }
     return `ψ(${display(arg(x))})`;
