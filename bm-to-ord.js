@@ -1,4 +1,3 @@
-//mtnif fuck you
 function eq(a, b) {
     if (typeof (a) == 'number') { return a == b; }
     if (a.length == 2) { return eq(a[0], b[0]) && eq(a[1], b[1]); }
@@ -35,6 +34,7 @@ function terms(x) {
 }
 
 function arg(x) {
+    console.log()
     return firstTerm(x)[0].slice(2, -1);
 }
 
@@ -332,19 +332,33 @@ function createTable(X) { return X.map(x => '<tr>' + x.map(y => '<td>' + y + '</
 
 let last = ''
 
-function cal(n) {
+function cal(TT) {
     //if(document.getElementById('input').value==last){return;}
-    var inp = n
     console.log('a')
-    let M = inp.replaceAll(' ', '');
+    let M = TT.replaceAll(' ', '');
     try { M = eval('[' + M.replaceAll(')(', '],[').replaceAll('(', '[').replaceAll(')', ']') + ']'); }
     catch (e) { return; }
     M = M.map(x => { let y = x.slice(); while (y.length < 3) { y.push(0) } return y; });
     let A = [...Array(M.length).keys()].map(x => D(M, x));
     if (Math.max(...A) > 70) {
-        return "Requested matrix is too long"
+        document.getElementById('output').innerHTML = 'Too complex';
+        document.getElementById('output3').innerHTML = '';
+        let Q = '<tr><th class="border">i</th><th class="border" colspan=3>M<sub>i</sub></th><th class="border">o(M,i)</th><th class="border">v(M,i)</th><th class="border">U(M,i)</th><th class="border">Children</th>';
+        for (let i = 0; i < M.length; i++) {
+            Q += '<tr>';
+            let m = [i.toString(), '(' + M[i][0] + ',', M[i][1] + ',', M[i][2] + ')', '?', '?', '?', '?'];
+            for (let j = 0; j < m.length; j++) {
+                if (j == 1 || j == 2 || j == 3) { Q += '<td class="nborder">'; }
+                else { Q += '<td class="border">'; }
+                Q += `${m[j]}</td>`;
+            }
+            Q += '</tr>';
+        }
+        Q += `<tr><td>Σ</td><td colspan=7>?</td></tr>`;
+        document.getElementById('output2').innerHTML = Q;
+        return;
     }
-    var r1 = display(_o(M));
+    return display(_o(M));
     let Q = '<tr><th class="border">i</th><th class="border" colspan=3>M<sub>i</sub></th><th class="border">o(M,i)</th><th class="border">v(M,i)</th><th class="border">U(M,i)</th><th class="border">Children</th>';
     let u = [...Array(M.length).keys()].map(x => U(M, x)[1]);
     let u1 = [...Array(M.length).keys()].filter(x => x != null).map(x => U(M, x)[1] * (-1) ** U(M, x)[0]);
@@ -371,6 +385,9 @@ function cal(n) {
         Q += '</tr>';
     }
     Q += `<tr><td>Σ</td><td colspan=7>${display(_o(M))}</td></tr>`;
-    var r2 = Q;
-   return [r1,r2]
+    document.getElementById('output2').innerHTML = Q;
+    last = document.getElementById('input').value;
 }
+//document.getElementById('input').value = '(0)(1,1,1)(2,1,1)(3,1,1)(1,1,1)(2,1,1)(3,1)(4,2,1)(5,2,1)(6,2,1)(2,1)(3,2,1)(4,2,1)(5,2,1)';
+//calculate();
+

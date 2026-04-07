@@ -185,14 +185,14 @@ function cM(pos, other_notations) {
 }
 
 function mile_init() {
-    for (i = 0; i < milestones.length; i++) {
+    for (var i = 0; i < milestones.length; i++) {
         document.getElementById("6").innerHTML = document.getElementById("6").innerHTML + `<div style="color: #ffe; width: 100%" id="md${i}">#${i+1} | <b style="font-size: 18px">${milestones[i][2]}</b><br><span style="font-size: small">${milestones[i][1]}<br>Achieved in ${getThen((reverse_enginnering(milestones[i][0]) - Date.now()))} (<span id="m${i}"></span>)</span></div>`
     }
 }
 
 function mile_load() {
     var j = Math.max(Math.floor(window.scrollY / 100 - 2), 0)
-    for (i = j; i < milestones.length && i < Math.floor(j + window.innerHeight / 100 + 4); i++) {
+    for (var i = j; i < milestones.length && i < Math.floor(j + window.innerHeight / 100 + 4); i++) {
         document.getElementById(`m${i}`).innerHTML = format_time((reverse_enginnering(milestones[i][0]) - Date.now()) / 1000)
         const r = document.getElementById(`md${i}`)
         if (reverse_enginnering(milestones[i][0]) < Date.now()) {

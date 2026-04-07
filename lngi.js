@@ -10,7 +10,7 @@ to = new Date().getTimezoneOffset()
 function gen_init_bms(x) {
     var s = ""
     var e = ""
-    for (i = 0; i < x; i++){
+    for (var i = 0; i < x; i++){
         s = s + "0,"
         e = e +"1,"
     }
@@ -22,7 +22,7 @@ function gen_init_bms(x) {
 function gen_init_bms(x) {
     var s = ""
     var e = ""
-    for (i = 0; i < x; i++) {
+    for (var i = 0; i < x; i++) {
         s = s + "0,"
         e = e + "1,"
     }
@@ -50,10 +50,10 @@ function lngi(prec=80,x = get_lngi_from_time(Date.now())) {
     }
     
     var p = 0
-    for (i = 0; i <= m; i++) {
-        t = Bms.parse(s).s.length
-        s = Bms.str2expand(s, k[i])
-        u = Bms.parse(s).s.length
+    for (var i = 0; i <= m; i++) {
+        var t = Bms.parse(s).s.length
+        var s = Bms.str2expand(s, k[i])
+        var u = Bms.parse(s).s.length
             if (t - 1 >= u) {
                 break
             }
@@ -64,7 +64,7 @@ function lngi(prec=80,x = get_lngi_from_time(Date.now())) {
         var q = v.s
         q.pop()
         v.s = q
-        s = v.toString()
+        var s = v.toString()
     }
     return [s.slice(0, -4), Math.min(p, 53)]
 }
@@ -72,7 +72,7 @@ function lngi(prec=80,x = get_lngi_from_time(Date.now())) {
 dt = 1767900000000
 //dt = dt-8640000000
 dt = Date['UTC'](2026, 3, 2) - 86400 * 1000 * 100 + to * 1000 * 60
-//dt = dt-2000000000
+dt = dt-1221000000
 function get_lngi_from_time(t) {
     var t = t - dt
     t = Math.log10(t / 86400000 + 1) / Math.log10(10) + 1
@@ -83,26 +83,27 @@ function reverse_enginnering(x) {
     return ((10 ** (x - 1)) - 1) * 86400000 + dt
 }
 
-function get_percent() {
-    var e = Math.min(100, (((get_lngi_from_time(Date.now()) % (2 ** (-w[1] + 1))) * 2 ** (w[1] - 1)) * 100))
+function get_percent(x) {
+    var e = Math.min(100, (((get_lngi_from_time(Date.now()) % (2 ** (-x + 1))) * 2 ** (x - 1)) * 100))
     if (Math.abs(e+1/e) > 100) {
         e = 100
     }
     return e
 }
 
-function case_closed() {
+function case_closed(x) {
     if (get_percent()==100){return 0}
-    var s = Math.ceil(get_lngi_from_time(Date.now())*(2**w[1]/2))/(2**w[1]/2)
+    var s = Math.ceil(get_lngi_from_time(Date.now())*(2**x/2))/(2**x/2)
     return ((reverse_enginnering(s)-Date.now())/1000).toFixed(3)
 }
 
+
 function update() {
-    w = lngi(50) //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
+    var w = lngi(55) //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
     document.getElementById("fps").innerHTML = fps.toFixed(3)
     document.getElementById("1").innerHTML = w[0]
-    document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
-    document.getElementById("4").style.width = get_percent() * 0.4 + "%"
+    document.getElementById("3").innerHTML = get_percent(w[1]).toFixed(3) + "%..."+case_closed(w[1])+"s"
+    document.getElementById("4").style.width = get_percent(w[1]) * 0.4 + "%"
     mile_load()
     fps = 1000/(Date.now()-last_update)
     last_update = Date.now()
@@ -111,13 +112,13 @@ function update() {
 }
 
 function smallUpdate() {
-    document.getElementById("11").innerHTML = ">" + cal(lngi(25)[0])[0]
+    document.getElementById("11").innerHTML = cal(lngi(32)[0])
 }
 
 fps = 0
 last_update = Date.now()
 setInterval(update, 1, 1)
-setInterval(smallUpdate, 100, 1)
+setInterval(smallUpdate, 10000, 1)
 
 function format_time(t) {
     if (t<0){return format_time(-t) + " ago"}

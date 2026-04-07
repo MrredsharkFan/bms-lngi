@@ -1,4 +1,4 @@
-var transpose = function (a) {
+var Etranspose = function (a) {
     if (!(a instanceof Array) || a.length == 0) {
         // not array
         return a;
@@ -20,7 +20,7 @@ var transpose = function (a) {
         }
     }
 }
-var inv = function (a) {
+var Einv = function (a) {
     if (a.length == 2) {
         var det = a[0][0] * a[1][1] - a[0][1] * a[1][0];
         if (det == 0) return [[NaN, NaN], [NaN, NaN]];
@@ -44,7 +44,7 @@ var inv = function (a) {
         return NaN;
     }
 };
-var mul = function (a0, a1) {
+var Emul = function (a0, a1) {
     if (a0 instanceof Array) {
         //a0[]?
         if (a0[0] instanceof Array) {
@@ -96,7 +96,7 @@ var mul = function (a0, a1) {
     }
 };
 /* ３次元ベクトルのドット積 a・b */
-var dot = function (a, b) {
+var Edot = function (a, b) {
     var c = 0;
     for (var i = 0; i < a.length; i++) {
         c += a[i] * b[i];
@@ -105,7 +105,7 @@ var dot = function (a, b) {
 };
 
 // kv[]
-var mulkv = function (k, v) {
+var Emulkv = function (k, v) {
     var a = new Array(v.length);
     for (var i = 0; i < v.length; i++) {
         a[i] = k * v[i];
@@ -113,7 +113,7 @@ var mulkv = function (k, v) {
     return a;
 };
 // kx[][]
-var mulkx = function (k, x) {
+var Emulkx = function (k, x) {
     var a = new Array(x.length);
     for (var i = 0; i < x.length; i++) {
         a[i] = new Array(x[0].length);
@@ -124,7 +124,7 @@ var mulkx = function (k, x) {
     return a;
 };
 // x[][]v[]
-var mulxv = function (x, v) {
+var Emulxv = function (x, v) {
     var a = new Array(x.length);
     for (var i = 0; i < a.length; i++) {
         a[i] = 0;
@@ -135,7 +135,7 @@ var mulxv = function (x, v) {
     return a;
 };
 // x0[][]x1[][]
-var mulxx = function (x0, x1) {
+var Emulxx = function (x0, x1) {
     var a = new Array(x0.length);
     for (var i = 0; i < a.length; i++) {
         a[i] = new Array(x1[0].length);
@@ -161,7 +161,7 @@ Array.prototype.toString = function () {
     return str;
 };
 /* ３次元ベクトル a, b のクロス積 a×b */
-var cross = function (a, b) {
+var Ecross = function (a, b) {
     return [
         a[1] * b[2] - a[2] * b[1],
         a[2] * b[0] - a[0] * b[2],
@@ -185,7 +185,7 @@ var Esub = function (a0, a1) {
     }
     return b;
 };
-var add = function (a0, a1) {
+var Eadd = function (a0, a1) {
     var b = new Array(a0.length);
     if (a0[0] instanceof Array) {
         for (var i = 0; i < a0.length; i++) {
@@ -225,7 +225,7 @@ var normalize = function (a) {
       :sin   = sin(theta)
    out:R = 回転行列
    Rodrigues' Rotation Formula より */
-var ang2rot = function (a, cos, sin) {
+var Eang2rot = function (a, cos, sin) {
     cos1 = 1 - cos;
     return [
         [cos + cos1 * a[0] * a[0], -sin * a[2] + cos1 * a[0] * a[1], +sin * a[1] + cos1 * a[0] * a[2],],
@@ -234,19 +234,8 @@ var ang2rot = function (a, cos, sin) {
     ];
 };
 
-var product = function (v1, v2) {
+var Eproduct = function (v1, v2) {
     var a = 0;
     for (var i = 0; i < v1.length; i++) a += v1[i] * v2[i];
     return a;
-};
-
-var testMatrix = function () {
-    var str = "";
-    var a0 = [1, 0, 0];
-    var a1 = [0, 1, 0];
-    var a2 = [1, 2, 0];
-    var R = getRotate(a0, a1);
-    str += "R=" + mat2str(R) + " , ";
-    str += "Ra2=" + mat2str(mul(R, a2));
-    return str;
 };
