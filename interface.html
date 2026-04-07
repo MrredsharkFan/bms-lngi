@@ -12,8 +12,12 @@
         <body id="body" style="font-family: system-ui">
             <div class="fake">
                 <div id="droplet" style="position: fixed; width: 100%; height: 100%"></div>
-                <div class="main_text" style="left: 55%; width: 37.5%" id="main_text">
+                <div class="main_text" style="left: 55%; width: 37.5%; height: 40%; top: 30%;" id="main_text">
                     <h2 id="1"></h2>
+                </div>
+                <div class="main_text" style="left: 55%; width: 37.5%; height: 20%; top: 75%;" id="anal">
+                    The analysis only updates once every 100ms for lag issues<br>
+                    <h2 id="11"></h2>
                 </div>
                 <div id="4" class="progress_bar">
                     <h2 style="color: white" id="3"></h2>
@@ -22,7 +26,8 @@
                 </div>
             </div>
             <div style="text-align: right; position: fixed; z-index: 999999; background-color: #111122cc; width: 103%; height: 10%; top: -1%; left: -1%; outline-color: white; outline-style: solid;">
-                <br><span style="position: absolute;text-align: right; color: white; right: 4%">You can scroll to view milestones. <br>Click the buttons to open/close the respective tabs.</span>
+                <br><span style="position: absolute;text-align: right; color: white; right: 4%">
+                    You can scroll to view milestones. <br>Click the buttons to open/close the respective tabs.<br><span id="fps"></span> fps</span>
                 <button class="tab_btn" style="left: 5%" onclick="mile_show()">Milestones</button>
                 <button class="tab_btn" style="left: 16%" onclick="cred_show()">Credits</button>
                 <button class="tab_btn" style="left: 27%" onclick="set_show()">Settings</button>
@@ -52,4 +57,5 @@
     <script src="array.js"></script>
     <script src="miles.js"></script>
     <script src="misc_graphics.js"></script>
+    <script src="bm-to-ord.js"></script>
 </html>

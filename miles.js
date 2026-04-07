@@ -181,7 +181,7 @@ cM(6, "ψ(H^H^H^ω)")
 cM(7, "ψ(H^H^H^H^ω)")
 
 function cM(pos, other_notations) {
-    milestones.push([pos, lngi(pos)[0], other_notations.replaceAll("p", "&psi;").replaceAll("W", "&Omega;").replaceAll("w", "&omega;").replaceAll(">a", "&alpha;").replaceAll(">l", "&lambda;").replaceAll("k", "&kappa;")])
+    milestones.push([pos, lngi(80,pos)[0], other_notations.replaceAll("p", "&psi;").replaceAll("W", "&Omega;").replaceAll("w", "&omega;").replaceAll(">a", "&alpha;").replaceAll(">l", "&lambda;").replaceAll("k", "&kappa;")])
 }
 
 function mile_init() {

@@ -37,7 +37,7 @@ Bms.prototype.expand = function (rst) {
     var r = this.getBadRoot();
     if (r == -1) return new Bms(s1, b1, this.f);
     /* delta = s[rightmost]-s[bad root] */
-    var delta = sub(s[xs - 1], s[r]);
+    var delta = Esub(s[xs - 1], s[r]);
     var lmnz = this.getLowermostNonzero(s[xs - 1]); /* lowermost nonzero */
     for (var y = lmnz; y < ys; y++) delta[y] = 0; /* */
     /* create new matrix -> s1 */

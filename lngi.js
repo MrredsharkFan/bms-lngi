@@ -28,13 +28,13 @@ function gen_init_bms(x) {
     }
     return `(${s}0)(${e}1)[99]`
 }
-function lngi(x = get_lngi_from_time(Date.now())) {
+function lngi(prec=80,x = get_lngi_from_time(Date.now())) {
     var s = gen_init_bms(Math.floor(x))
     var j = x % 1
     var l = 0
     var k = [1]
     var m = 0
-    while (l < 80) {
+    while (l < prec) {
         if (j < 0.5) {
             j = j * 2
             k.push(0)
@@ -98,7 +98,8 @@ function case_closed() {
 }
 
 function update() {
-    w = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
+    w = lngi(50) //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
+    document.getElementById("fps").innerHTML = fps.toFixed(3)
     document.getElementById("1").innerHTML = w[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
@@ -109,9 +110,14 @@ function update() {
     saveSettings()
 }
 
+function smallUpdate() {
+    document.getElementById("11").innerHTML = ">" + cal(lngi(25)[0])[0]
+}
+
 fps = 0
 last_update = Date.now()
 setInterval(update, 1, 1)
+setInterval(smallUpdate, 100, 1)
 
 function format_time(t) {
     if (t<0){return format_time(-t) + " ago"}

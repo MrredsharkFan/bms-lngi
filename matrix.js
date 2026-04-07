@@ -169,7 +169,7 @@ var cross = function (a, b) {
     ];
 };
 
-var sub = function (a0, a1) {
+var Esub = function (a0, a1) {
     b = new Array(a0.length);
     if (a0[0] instanceof Array) {
         for (var i = 0; i < a0.length; i++) {
