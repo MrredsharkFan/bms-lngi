@@ -1,11 +1,6 @@
-
-
 if (null == localStorage.getItem("bms-font")) { document.getElementById("font").value = "system-ui" }
 else { document.getElementById("font").value = localStorage.getItem("bms-font") }
 to = new Date().getTimezoneOffset()
-
-
-
 
 function gen_init_bms(x) {
     var s = ""
@@ -97,9 +92,15 @@ function case_closed() {
     return ((reverse_enginnering(s)-Date.now())/1000).toFixed(3)
 }
 
+function calculate(n){
+  //if(document.getElementById('input').value==last){return;}
+  let M=eval('['+n.replaceAll(')(','],[').replaceAll('(','[').replaceAll(')',']')+']');
+  return display(_o(M));
+}
 function update() {
-    w = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
-    document.getElementById("1").innerHTML = w[0]
+  nea = lngi() //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
+      document.getElementById("ord").innerHTML = calculate(nea[0]);
+    document.getElementById("1").innerHTML = nea[0]
     document.getElementById("3").innerHTML = get_percent().toFixed(3) + "%..."+case_closed()+"s"
     document.getElementById("4").style.width = get_percent() * 0.4 + "%"
     mile_load()
@@ -111,7 +112,7 @@ function update() {
 
 fps = 0
 last_update = Date.now()
-setInterval(update, 1, 1)
+setInterval(update, 1000/30)
 
 function format_time(t) {
     if (t<0){return format_time(-t) + " ago"}
