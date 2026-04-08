@@ -77,29 +77,21 @@ function lngi(prec=80,x = get_lngi_from_time(Date.now())) {
 dt = 1767900000000
 //dt = dt-8640000000
 dt = Date['UTC'](2026, 3, 2) - 86400 * 1000 * 100 + to * 1000 * 60
-//dt = dt-1221000000
+//dt = dt -421000000
 function get_lngi_from_time(t) {
     var t = t - dt
     t = Math.log10(t / 86400000 + 1) / Math.log10(10) + 1
     return t
 }
 
-function reverse_enginnering(x) {
-    return ((10 ** (x - 1)) - 1) * 86400000 + dt
-}
+function reverse_enginnering(x) { return ((10 ** (x - 1)) - 1) * 86400000 + dt }
 
-function get_percent(x) {
-    var e = Math.min(100, (((get_lngi_from_time(Date.now()) % (2 ** (-x + 1))) * 2 ** (x - 1)) * 100))
-    if (Math.abs(e+1/e) > 100) {
-        e = 100
-    }
-    return e
-}
+function get_percent(x) { return Math.min(100, (((get_lngi_from_time(Date.now()) % (2 ** (-x + 1))) * 2 ** (x - 1)) * 100)) }
 
 function case_closed(x) {
     if (get_percent()==100){return 0}
-    var s = Math.ceil(get_lngi_from_time(Date.now())*(2**x/2))/(2**x/2)
-    return ((reverse_enginnering(s)-Date.now())/1000).toFixed(3)
+    var ss = Math.ceil(get_lngi_from_time(Date.now())*(2**x/2))/(2**x/2)
+    return ((reverse_enginnering(ss)-Date.now())/1000).toFixed(3)
 }
 
 
@@ -114,7 +106,15 @@ function update() {
         document.getElementById("anal").style.top = "999%"
     }
     else {
-        smallUpdate()
+        try { smallUpdate(32) }
+        catch (err) {
+            for (var t = 31; t != 0; t--){
+                try {
+                    smallUpdate(t); console.log(t); break
+                }
+                catch (err){console.log(err)} //wtf?
+            }
+        }
     }
     mile_load()
     fps = 1000/(Date.now()-last_update)
@@ -123,14 +123,14 @@ function update() {
     saveSettings()
 }
 
-function smallUpdate() {
-    document.getElementById("11").innerHTML = cal(lngi(32)[0])
+function smallUpdate(ss) {
+    document.getElementById("11").innerHTML = ">"+cal(lngi(ss)[0])
 }
 
 
 fps = 0
 last_update = Date.now()
-setInterval(update, 1, 1)
+setInterval(update, 10, 1)
 
 function format_time(t) {
     if (t<0){return format_time(-t) + " ago"}

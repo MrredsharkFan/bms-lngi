@@ -1,5 +1,6 @@
 function eq(a, b) {
     if (typeof (a) == 'number') { return a == b; }
+    if (a==undefined){return false}
     if (a.length == 2) { return eq(a[0], b[0]) && eq(a[1], b[1]); }
     return eq(a[0], b[0]) && eq(a[1], b[1]) && eq(a[2], b[2]);
 }
