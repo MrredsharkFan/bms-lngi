@@ -49,9 +49,17 @@ cM(3 + 1 / 32 + 1 / 1024, "p(W_w^2*W)")
 cM(3 + 1 / 32 + 1 / 512, "p(W_w^w)")
 cM(3 + 1 / 32 + 1 / 256, "p(W_w^W)")
 cM(3 + 1 / 32 + 1 / 128, "p(W_{w+1}) / TFBO")
+cM(3 + 1 / 32 + 1 / 128 + 1 / 1024, "p(W_{w+1}*W_w)")
 cM(3 + 1 / 32 + 1 / 128 + 1 / 512, "p(W_{w+1}^2)")
-cM(3 + 1 / 32 + 1 / 128 + 1/256, "p(W_{w+2})")
+cM(3 + 1 / 32 + 1 / 128 + 1 / 256, "p(W_{w+2})")
+cM(3 + 1 / 32 + 1 / 128 + 1 / 256 + 1/512, "p(W_{w+3})")
 cM(3 + 1 / 32 + 1 / 64, "p(W_{w2})")
+cM(3 + 1 / 32 + 1 / 64 + 1 / 128, "p(W_{w2}*W_{w+1})")
+cM(3 + 1 / 32 + 1 / 64 + 1 / 128 + 1 / (2**16), "p(W_{w2}^2)")
+cM(3 + 1 / 32 + 1 / 64 + 1 / 128 + 1 / 512, "p(W_{w2+1})")
+cM(3 + 1 / 32 + 1 / 64 + 1 / 128 + 1 / 256, "p(W_{w3})")
+cM(3 + 1 / 32 + 1 / 64 + 1 / 128 + 1 / 256 + 1 / 512, "p(W_{w3}*W_{w2+1})")
+cM(3 + 1 / 32 + 1 / 64 + 1 / 128 + 1 / 256 + 1 / 512 + 1/1024, "p(W_{w4})")
 cM(3 + 1 / 16, "p(W_{w^2})")
 cM(3 + 1 / 16 + 1 / 512, "p(W_{w^2}*W)")
 cM(3 + 1 / 16 + 1 / 512 + 1 / 2048, "p(W_{w^2+1})")
@@ -186,7 +194,7 @@ function cM(pos, other_notations) {
 
 function mile_init() {
     for (var i = 0; i < milestones.length; i++) {
-        document.getElementById("6").innerHTML = document.getElementById("6").innerHTML + `<div style="color: #ffe; width: 100%" id="md${i}">#${i+1} | <b style="font-size: 18px">${milestones[i][2]}</b><br><span style="font-size: small">${milestones[i][1]}<br>Achieved in ${getThen((reverse_enginnering(milestones[i][0]) - Date.now()))} (<span id="m${i}"></span>)</span></div>`
+        document.getElementById("6").innerHTML = document.getElementById("6").innerHTML + `<div style="color: #ffe; width: 100%" id="md${i}">#${i+1} | <b style="font-size: 18px">${milestones[i][2]}</b><br><span style="font-size: small">${milestones[i][1]}<br>Achieved at ${getThen((reverse_enginnering(milestones[i][0]) - Date.now()))} (<span id="m${i}"></span>)</span></div>`
     }
 }
 

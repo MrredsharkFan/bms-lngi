@@ -99,21 +99,19 @@ function update() {
     var w = lngi(55) //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
     document.getElementById("fps").innerHTML = fps.toFixed(3)
     document.getElementById("1").innerHTML = w[0]
-    document.getElementById("3").innerHTML = get_percent(w[1]).toFixed(3) + "%..."+case_closed(w[1])+"s"
+    document.getElementById("3").innerHTML = get_percent(w[1]).toFixed(3) + "% (" + case_closed(w[1]) + "s)"
+    document.getElementById("12").innerHTML = "Time elapsed: " + format_time((Date.now()-dt)/1000)
     document.getElementById("4").style.width = get_percent(w[1]) * 0.4 + "%"
     if (w[0] >= "(0,0,0)(1,1,1)(2,2,0)") {
         document.getElementById("main_text").style.height = "65%"
         document.getElementById("anal").style.top = "999%"
     }
     else {
-        try { smallUpdate(32) }
-        catch (err) {
-            for (var t = 31; t != 0; t--){
+        for (var t = 48; t != 0; t--){
                 try {
                     smallUpdate(t); break
                 }
                 catch (err){} //wtf?
-            }
         }
     }
     mile_load()
@@ -124,7 +122,7 @@ function update() {
 }
 
 function smallUpdate(ss) {
-    document.getElementById("11").innerHTML = ">"+cal(lngi(ss)[0])
+    document.getElementById("11").innerHTML = cal(lngi(ss)[0])
 }
 
 
@@ -139,7 +137,6 @@ function format_time(t) {
     if (t < 86400) { return Math.floor(t / 3600) + "h " + format_time(t % 3600) }
     if (t < 86400 * 365) { return Math.floor(t / 86400) + "d " + format_time(t % 86400) }
     else { return Math.floor(t / 86400 / 365) + "y " + format_time(t % (86400 * 365)) }
-
 }
 
 function saveSettings() {
