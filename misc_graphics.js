@@ -7,7 +7,7 @@ function summon_droplets(t) {
     }
 }
 
-summon_droplets(24)
+summon_droplets(0)
 
 function font_change() {
     document.getElementById("body").style["fontFamily"] = document.getElementById("font").value
