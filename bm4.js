@@ -57,7 +57,7 @@ Bms.prototype.expand = function (rst) {
         if (s1.length >= lim_cs) break
     }
     if ((s1[1][s1[1].length - 1]) == 0) {
-        for (i = 0; i < lim_cs; i++) {
+        for (var i = 0; i < lim_cs; i++) {
             s1[i].pop()
         }
     }
