@@ -72,7 +72,7 @@ function lngi(prec=80,x = get_lngi_from_time(Date.now())) {
 dt = 1767900000000
 //dt = dt-8640000000
 dt = Date['UTC'](2026, 3, 2) - 86400 * 1000 * 100 + to * 1000 * 60
-dt = dt-1221000000
+//dt = dt-1221000000
 function get_lngi_from_time(t) {
     var t = t - dt
     t = Math.log10(t / 86400000 + 1) / Math.log10(10) + 1

@@ -118,7 +118,7 @@ function op(x) { // "does it need parentheses when you write something*x"
 }
 
 // does not handle I(ψ(T^M),1) because it's too complicated
-function display(x, y) {
+function Edisplay(x, y) {
     //if(!y){return 'X'}
     //console.log(x);
     if (x == '0') { return '0'; }
@@ -341,24 +341,9 @@ function cal(TT) {
     M = M.map(x => { let y = x.slice(); while (y.length < 3) { y.push(0) } return y; });
     let A = [...Array(M.length).keys()].map(x => D(M, x));
     if (Math.max(...A) > 70) {
-        document.getElementById('output').innerHTML = 'Too complex';
-        document.getElementById('output3').innerHTML = '';
-        let Q = '<tr><th class="border">i</th><th class="border" colspan=3>M<sub>i</sub></th><th class="border">o(M,i)</th><th class="border">v(M,i)</th><th class="border">U(M,i)</th><th class="border">Children</th>';
-        for (let i = 0; i < M.length; i++) {
-            Q += '<tr>';
-            let m = [i.toString(), '(' + M[i][0] + ',', M[i][1] + ',', M[i][2] + ')', '?', '?', '?', '?'];
-            for (let j = 0; j < m.length; j++) {
-                if (j == 1 || j == 2 || j == 3) { Q += '<td class="nborder">'; }
-                else { Q += '<td class="border">'; }
-                Q += `${m[j]}</td>`;
-            }
-            Q += '</tr>';
-        }
-        Q += `<tr><td>Σ</td><td colspan=7>?</td></tr>`;
-        document.getElementById('output2').innerHTML = Q;
-        return;
+        return 'Too complex';
     }
-    return display(_o(M));
+    return Edisplay(_o(M));
     let Q = '<tr><th class="border">i</th><th class="border" colspan=3>M<sub>i</sub></th><th class="border">o(M,i)</th><th class="border">v(M,i)</th><th class="border">U(M,i)</th><th class="border">Children</th>';
     let u = [...Array(M.length).keys()].map(x => U(M, x)[1]);
     let u1 = [...Array(M.length).keys()].filter(x => x != null).map(x => U(M, x)[1] * (-1) ** U(M, x)[0]);
