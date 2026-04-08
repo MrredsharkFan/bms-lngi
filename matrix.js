@@ -202,7 +202,7 @@ var Eadd = function (a0, a1) {
     return b;
 };
 
-var abs = function (a) {
+var Eabs = function (a) {
     var n = 0;
     for (var i = 0; i < a.length; i++) {
         n += a[i] * a[i];
@@ -210,7 +210,7 @@ var abs = function (a) {
     return Math.sqrt(n);
 };
 
-var normalize = function (a) {
+var Enormalize = function (a) {
     var invabs = 1 / abs(a);
     var b = a.slice(0);
     for (var i = 0; i < a.length; i++) {

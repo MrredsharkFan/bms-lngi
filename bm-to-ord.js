@@ -118,7 +118,7 @@ function op(x) { // "does it need parentheses when you write something*x"
 }
 
 // does not handle I(ψ(T^M),1) because it's too complicated
-function Edisplay(x, y) {
+function display(x) {
     //if(!y){return 'X'}
     //console.log(x);
     if (x == '0') { return '0'; }
@@ -343,7 +343,7 @@ function cal(TT) {
     if (Math.max(...A) > 70) {
         return 'Too complex';
     }
-    return Edisplay(_o(M));
+    return display(_o(M));
     let Q = '<tr><th class="border">i</th><th class="border" colspan=3>M<sub>i</sub></th><th class="border">o(M,i)</th><th class="border">v(M,i)</th><th class="border">U(M,i)</th><th class="border">Children</th>';
     let u = [...Array(M.length).keys()].map(x => U(M, x)[1]);
     let u1 = [...Array(M.length).keys()].filter(x => x != null).map(x => U(M, x)[1] * (-1) ** U(M, x)[0]);
