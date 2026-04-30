@@ -17,6 +17,8 @@
                 </div>
                 <div class="main_text" style="left: 55%; width: 37.5%; height: 20%; top: 75%;" id="anal">
                     <span style="font-size: 25px;">&approx;<span id="11"></span></span>
+                    <canvas id="12" width=640 height=12000 style="display:none"></canvas>
+                    <img id='outimg' style='border-style:none;border-width:1px;'>
                 </div>
                 <div id="4" class="progress_bar">
                     <br><span style="color: white; width: 100px; position: absolute; text-wrap-mode: nowrap; font-size: 25px;" id="3"></span><br><br>
@@ -47,7 +49,10 @@
             <div class="cred" id="settings" style="top: 120%; opacity: 0; background-color: #112266cc">
                 <span style="font-size: 50px; color: #fff">Settings</span><br><br>
                 <span style="color: #ccf"><b>Text font: </b><input id="font" value="system-ui"></input><br>Or, choose from one of the presets.</span><br>
-                <div id="font-buttons" style="width: 100%; height: 50%; left: 15%"></div><hr>
+                <div id="font-buttons" style="width: 100%; left: 15%"></div><hr>
+                <span style="color: #9af">Bottom display:</span>
+                <button class="font_button" onclick="thing = 0; document.getElementById('outimg').style.opacity=0">Analysis</button>
+                <button class="font_button" onclick="thing = 1; document.getElementById('outimg').style.opacity=1">Hydra viewer</button>
             </div>
         </body>
     </main>
@@ -58,4 +63,5 @@
     <script src="miles.js"></script>
     <script src="misc_graphics.js"></script>
     <script src="bm-to-ord.js"></script>
+    <script src="hydra_viewer.js"></script>
 </html>

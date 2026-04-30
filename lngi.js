@@ -3,6 +3,8 @@
 if (null == localStorage.getItem("bms-font")) { document.getElementById("font").value = "system-ui" }
 else { document.getElementById("font").value = localStorage.getItem("bms-font") }
 
+var thing = 0
+
 
 function cmp_bms(x,y) {
     //this shit about to work af
@@ -119,17 +121,14 @@ function update() {
     document.getElementById("3").innerHTML = get_percent(w[1]).toFixed(3) + "% (" + case_closed(w[1]) + "s)"
     document.getElementById("12").innerHTML = "Time elapsed: " + format_time((Date.now()-dt)/1000)
     document.getElementById("4").style.width = get_percent(w[1]) * 0.4 + "%"
-    if (w[0] >= "(0,0,0)(1,1,1)(2,2,0)") {
+    if (w[0] >= "(0,0,0)(1,1,1)(2,2,0)" & !(thing==1)) {
         document.getElementById("main_text").style.height = "65%"
         document.getElementById("anal").style.top = "999%"
     }
     else {
-        for (var t = 32; t != 0; t--){
-                try {
-                    smallUpdate(t); break
-                }
-                catch (err){} //wtf?
-        }
+            document.getElementById("main_text").style.height = "40%"
+            document.getElementById("anal").style.top = "75%"
+        smallUpdate(36)
     }
     mile_load()
     fps = 1000/(Date.now()-last_update)
@@ -139,7 +138,7 @@ function update() {
 }
 
 function smallUpdate(ss) {
-    document.getElementById("11").innerHTML = cal(lngi(ss)[0])
+    document.getElementById("11").innerHTML = thing==0?cal(lngi(ss)[0]):draw(lngi(ss)[0])
 }
 
 
