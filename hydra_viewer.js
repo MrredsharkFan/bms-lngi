@@ -911,7 +911,7 @@ var draw = function (q) {
     var ys = new Array(matrices);
     var stroffsetx = 50;//pixel
     ctx.fillStyle = "black";
-    ctx.font = '18px Arial';
+    ctx.font = '9px Arial';
     for (var m = 0; m < matrices; m++) {
         var matrix = matrixList[m];
         //measure string
@@ -919,7 +919,7 @@ var draw = function (q) {
         var xx = stroffsetx + ctx.measureText(str).width;
         width = xx > width ? xx : width;
         ys[m] = height;
-        height += 15;
+        height += 10;
         //measure drawing
         var xx = (30 + (matrix.columns + 1) * 15) * BMV.length;
         width = xx > width ? xx : width;
@@ -928,7 +928,7 @@ var draw = function (q) {
         for (var i = 0; i < BMV.length; i++) {
             var offsets = rowOffsets(vers[i], matrix);
             offsetList[m][i] = offsets;
-            var ny = offsets[matrix.rows - 1] + 50;
+            var ny = offsets[matrix.rows - 1] + 40;
             yy = ny > yy ? ny : yy;
         }
         height = height + yy;
@@ -936,21 +936,14 @@ var draw = function (q) {
 
     //resize and clear canvas
     canvas.width = width;
-    canvas.height = height;
-    ctx.fillStyle = "white";
+    var e = height
+    canvas.height = 1000;
+    ctx.fillStyle = "#00000000";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    //draw string
-    ctx.fillStyle = "black";
-    ctx.font = '18px Arial';
-    for (var m = 0; m < matrices; m++) {
-        var matrix = matrixList[m];
-        ctx.fillText(matrix.toString(), stroffsetx, ys[m] + 30);
-    }
     //draw hydra
     for (var m = 0; m < matrices; m++) {
         var matrix = matrixList[m];
-        drawMatrix(50, ys[m] + 30, offsetList[m][0], vers[0], matrix);
+        drawMatrix(50, 430-height, offsetList[m][0], vers[0], matrix);
     }
 
     //enable save
@@ -995,17 +988,18 @@ var rowOffsets = function (ver, matrix) {
         for (var x = 0; x < matrix.columns; x++) {
             margin = upperbound[x] - lowerbound[x] > margin ? upperbound[x] - lowerbound[x] : margin;
         }
-        offsets.push(currentOffset += (margin + 1) * 30);
+        offsets.push(currentOffset += (margin + 1) * 20);
     }
     return offsets;
 }
 var drawMatrix = function (bx, by, offsets, ver, matrix) {
+    const h = 20
     var r = ver.badroot(matrix);
     for (var y = 0; y < matrix.rows; y++) {
         //row root
         var rx = bx, ry = by + offsets[y];
         ctx.strokeStyle = "black";
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(rx - 20, ry + 20);
         ctx.lineTo(rx - 40, ry + 40);
@@ -1013,55 +1007,35 @@ var drawMatrix = function (bx, by, offsets, ver, matrix) {
         ctx.lineTo(rx - 40, ry + 20);
         ctx.stroke();
         for (var x = 0; x < matrix.columns; x++) {
-            //node
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = ver.color(matrix, x, y);
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.arc(rx + x * 30, ry - matrix.get(x, y) * 30, 7.8, 0, 2 * Math.PI);
-            ctx.fill();
-            ctx.stroke();
-            //number
-            ctx.fillStyle = "black";
-            ctx.font = "15px arial";
-            ctx.fillText(matrix.get(x, y), rx - 4 + x * 30, ry + 5 - matrix.get(x, y) * 30);
-            //bad root symbol
-            if (x == r) {
-                ctx.strokeStyle = "red";
-                ctx.beginPath();
-                ctx.moveTo(rx + x * 30 - 10, ry - matrix.get(x, y) * 30 + 2);
-                ctx.lineTo(rx + x * 30 - 15, ry - matrix.get(x, y) * 30 - 2);
-                ctx.lineTo(rx + x * 30 - 10, ry - matrix.get(x, y) * 30 - 4);
-                ctx.lineTo(rx + x * 30 - 12, ry - matrix.get(x, y) * 30 - 10);
-                ctx.lineTo(rx + x * 30 - 7, ry - matrix.get(x, y) * 30 - 8);
-                ctx.lineTo(rx + x * 30 - 5, ry - matrix.get(x, y) * 30 - 14);
-                ctx.lineTo(rx + x * 30 - 0, ry - matrix.get(x, y) * 30 - 10);
-                ctx.stroke();
-            }
-            //rightmost column symbol
-            if (x == matrix.columns - 1) {
-                ctx.strokeStyle = "red";
-                ctx.beginPath();
-                ctx.moveTo(rx + x * 30 + 0, ry - matrix.get(x, y) * 30 - 15);
-                ctx.lineTo(rx + x * 30 + 10, ry - matrix.get(x, y) * 30 - 5);
-                ctx.moveTo(rx + x * 30 + 0, ry - matrix.get(x, y) * 30 - 5);
-                ctx.lineTo(rx + x * 30 + 10, ry - matrix.get(x, y) * 30 - 15);
-                ctx.stroke();
-            }
+            
             //parency line
             ctx.strokeStyle = "black";
             ctx.beginPath();
             var parent = ver.parent(matrix, x, y);
             if (parent == -1) {
-                ctx.moveTo(rx + parent * 30 + 5.5, ry + 30 - 5.5);
-                ctx.lineTo(rx + parent * 30 + 15, ry + 30 - 15);
+                ctx.moveTo(rx + parent * 30 + 5.5, ry + h - 5.5);
+                ctx.lineTo(rx + parent * 30 + 15, ry + h - 15);
             } else {
-                ctx.moveTo(rx + parent * 30 + 5.5, ry - matrix.get(parent, y) * 30 - 5.5);
-                ctx.lineTo(rx + parent * 30 + 15, ry - matrix.get(parent, y) * 30 - 15);
+                ctx.moveTo(rx + parent * 30 + 5.5, ry - matrix.get(parent, y) * h - 5.5);
+                ctx.lineTo(rx + parent * 30 + 15, ry - matrix.get(parent, y) * h - 15);
             }
-            ctx.lineTo(rx + x * 30 - 15, ry - matrix.get(x, y) * 30 + 15);
-            ctx.lineTo(rx + x * 30 - 5.5, ry - matrix.get(x, y) * 30 + 5.5);
+            ctx.lineTo(rx + x * 30 - 5.5, ry - matrix.get(x, y) * h + 5.5);
             ctx.stroke();
+        }
+        //ahh yes layers
+        for (var x = 0; x < matrix.columns; x++){
+            //node
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = ver.color(matrix, x, y);
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(rx + x * 30, ry - matrix.get(x, y) * h, 7.8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            //number
+            ctx.fillStyle = "black";
+            ctx.font = `${15 / matrix.get(x, y).toString().length}px arial`;
+            ctx.fillText(matrix.get(x, y), rx - 4 + x * 30, ry + 5 - matrix.get(x, y) * h);
         }
     }
 }

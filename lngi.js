@@ -121,13 +121,14 @@ function update() {
     document.getElementById("3").innerHTML = get_percent(w[1]).toFixed(3) + "% (" + case_closed(w[1]) + "s)"
     document.getElementById("12").innerHTML = "Time elapsed: " + format_time((Date.now()-dt)/1000)
     document.getElementById("4").style.width = get_percent(w[1]) * 0.4 + "%"
-    if (w[0] >= "(0,0,0)(1,1,1)(2,2,0)" & !(thing==1)) {
+    if (get_lngi_from_time(Date.now())>3.125 & !(thing==1)) {
         document.getElementById("main_text").style.height = "65%"
         document.getElementById("anal").style.top = "999%"
     }
     else {
-            document.getElementById("main_text").style.height = "40%"
-            document.getElementById("anal").style.top = "75%"
+        document.getElementById("11").style.fontSize = (thing==0?"100%":"0%")
+        document.getElementById("main_text").style.height = "20%"
+        document.getElementById("anal").style.top = "55%"
         smallUpdate(36)
     }
     mile_load()
