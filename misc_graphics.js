@@ -7,20 +7,4 @@ function summon_droplets(t) {
     }
 }
 
-summon_droplets(0)
-
-function font_change() {
-    document.getElementById("body").style["fontFamily"] = document.getElementById("font").value
-}
-
-
-fonts = ["system-ui","Sofia", "Trispace","Ubuntu","Saira", "Monospace", "Arial", "Wingdings", "Cursive", "Sora","Helvetica","Papyrus","Noto Sans","Roboto Condensed"]
-
-function generate_fonts() {
-    for (var i = 0; i < fonts.length;i++) {
-        console.log(fonts[i])
-        document.getElementById("font-buttons").innerHTML = document.getElementById("font-buttons").innerHTML+`<button style="font-family: ${fonts[i]}" class="font_button" onclick='document.getElementById("font").value = "${fonts[i]}"'>${fonts[i]}</button>`
-    }
-}
-
-generate_fonts()
+summon_droplets(25)

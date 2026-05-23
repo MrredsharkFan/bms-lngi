@@ -1,8 +1,3 @@
-
-
-if (null == localStorage.getItem("bms-font")) { document.getElementById("font").value = "system-ui" }
-else { document.getElementById("font").value = localStorage.getItem("bms-font") }
-
 var thing = 0
 
 
@@ -116,26 +111,16 @@ function case_closed(x) {
 
 function update() {
     var w = lngi(55) //HOW TF DID A GLOBAL VARIABLE MAKE THIS 3-4X FASTER
-    document.getElementById("fps").innerHTML = fps.toFixed(3)
     document.getElementById("1").innerHTML = w[0]
     document.getElementById("3").innerHTML = get_percent(w[1]).toFixed(3) + "% (" + case_closed(w[1]) + "s)"
     document.getElementById("12").innerHTML = "Time elapsed: " + format_time((Date.now()-dt)/1000)
     document.getElementById("4").style.width = get_percent(w[1]) * 0.4 + "%"
-    if (get_lngi_from_time(Date.now())>3.125 & !(thing==1)) {
-        document.getElementById("main_text").style.height = "65%"
-        document.getElementById("anal").style.top = "999%"
-    }
-    else {
-        document.getElementById("11").style.fontSize = (thing==0?"100%":"0%")
-        document.getElementById("main_text").style.height = "20%"
-        document.getElementById("anal").style.top = "55%"
-        smallUpdate(36)
-    }
-    mile_load()
+    document.getElementById("100").innerHTML = `${lngi(40, get_next_mile()[0])[0]}
+                                                <br><small>${get_next_mile()[2]}
+                                                <br>${(100 * ((get_lngi_from_time(Date.now()) - get_next_mile()[3]) / (get_next_mile()[0] - get_next_mile()[3]))).toFixed(5)}%</small>`
+    document.getElementById("time").innerHTML = `${new Date().toLocaleDateString()}<br><small>${new Date().toLocaleTimeString()}</small>`
     fps = 1000/(Date.now()-last_update)
     last_update = Date.now()
-    font_change()
-    saveSettings()
 }
 
 function smallUpdate(ss) {

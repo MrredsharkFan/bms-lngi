@@ -1,10 +1,10 @@
 @keyframes droplet {
-    from {top: 0%;}
-    to {top: 100%;}
+    from {top: 0%; height: 1%}
+    to {top: 100%; height: 2%}
 }
 
 html {
-    background-image: linear-gradient(#4af,#00a);
+    background-image: linear-gradient(#115,#424);
     height: 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -36,9 +36,10 @@ html {
     text-align: left;
     background-color: white;
     position: fixed;
-    left: 55%;
-    top:20%;
+    left: 5%;
+    top: 73%;
     height: 2%;
+    font-size: 70%;
 }
 
 .m {
@@ -79,7 +80,7 @@ html {
 .droplet {
     animation-name: droplet;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in;
+    animation-timing-function: ease-out;
     position: fixed;
     background-color: #ffffff88;
     width: 0.2%;

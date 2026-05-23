@@ -10,49 +10,19 @@
 
     <main>
         <body id="body">
+            <span style="opacity: 20%; top: 6%; font-size: 200%; text-align: center; width: 100%; position: fixed; color: white" id="time">hi</span>
             <div class="fake">
-                <div id="droplet" style="position: fixed; width: 100%; height: 100%"></div>
-                <div class="main_text" style="left: 55%; width: 37.5%; height: 40%; top: 30%;" id="main_text">
-                    <h2 id="1"></h2>
-                </div>
-                <div class="main_text" style="left: 55%; width: 37.5%; height: 40%; top: 75%;" id="anal">
-                    <span style="font-size: 25px;"><span id="11"></span></span>
-                    <canvas id="12" width=640 height=12000 style="display:none"></canvas>
-                    <img id='outimg' style='border-style:none;border-width:1px;'>
+                <div id="droplet" style="position: fixed; width: 50%; left: 25%; height: 100%;"></div>
+                <div class="main_text" style="left: 5%; width: 90%; height: 10%; top: 85%" id="main_text">
+                    Current ordinal<br><span style="font-size: 60%" id="1"></span>
                 </div>
                 <div id="4" class="progress_bar">
                     <br><span style="color: white; width: 100px; position: absolute; text-wrap-mode: nowrap; font-size: 25px;" id="3"></span><br><br>
                     <span id="12" style="color: white; text-wrap-mode: nowrap; width: 100px"></span>
                 </div>
-                <div id="6" style="opacity: 1; left: 0%" class="container">
+                <div class="main_text" style="position: fixed; width: 40%; left: 55%; height: 10%; top: 70%">
+                    <i>Next milestone:</i> <br><span style="font-size: 80%" id="100"></span>
                 </div>
-            </div>
-            <div style="text-align: right; position: fixed; z-index: 999999; background-color: #111122cc; width: 103%; height: 10%; top: -1%; left: -1%; outline-color: white; outline-style: solid;">
-                <br><span style="position: absolute;text-align: right; color: white; right: 4%">
-                    You can scroll to view milestones. <br>Click the buttons to open/close the respective tabs.<br><span id="fps"></span> fps</span>
-                <button class="tab_btn" style="left: 5%" onclick="mile_show()">Milestones</button>
-                <button class="tab_btn" style="left: 16%" onclick="cred_show()">Credits</button>
-                <button class="tab_btn" style="left: 27%" onclick="set_show()">Settings</button>
-            </div>
-            <div id="credits" class="cred" style="top: 120%; opacity: 0; background-color: #334455cc;">
-                <span style="color: #fff"><b style="font-size: 50px">BMS LNGI</b><br>(Also as: Bashicu Matrix System: Large Numbers Gradually Inceasing)<hr>
-                made by Termiunsfinity / SmallStergentOrdinal / 088123665 / Mrredsharkfan<br>BMS expander by Naruyoko<br>BMS autoanalysis by solarzone1011<br>
-                Made to improve HTML+CSS+js skill and as a transition from Scratch<hr></span>
-                <span style="color: #afc"><span style="font-size: 30px">Analysus taken from</span><br>
-                Myself (&LessSlantEqual;SIO)<br>
-                Meta Sheet Analysis (SIO~TSSO)<br>
-                wiki.googology.top (TSSO+)</span><hr>
-                <span style="color: #fcd"><span style="font-size: 30px">Inspiration taken from</span><br>
-                LNGI videos<br>
-                dshamlin's global number names (techinally a remix)</span>
-            </div>
-            <div class="cred" id="settings" style="top: 120%; opacity: 0; background-color: #112266cc">
-                <span style="font-size: 50px; color: #fff">Settings</span><br><br>
-                <span style="color: #ccf"><b>Text font: </b><input id="font" value="system-ui"></input><br>Or, choose from one of the presets.</span><br>
-                <div id="font-buttons" style="width: 100%; left: 15%"></div><hr>
-                <span style="color: #9af">Bottom display:</span>
-                <button class="font_button" onclick="thing = 0; document.getElementById('outimg').style.opacity=0">Analysis</button>
-                <button class="font_button" onclick="thing = 1; document.getElementById('outimg').style.opacity=1">Hydra viewer</button>
             </div>
         </body>
     </main>
@@ -62,6 +32,4 @@
     <script src="array.js"></script>
     <script src="miles.js"></script>
     <script src="misc_graphics.js"></script>
-    <script src="bm-to-ord.js"></script>
-    <script src="hydra_viewer.js"></script>
 </html>
