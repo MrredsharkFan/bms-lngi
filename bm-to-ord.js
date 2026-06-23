@@ -164,7 +164,6 @@ function display(x) { //ah yes Layers
             else if (m == 'p(0)+p(0)') { s = 'I'; }
             else if (lt(m, 'p(P(P(p(P(P(P(0)))))))')) { s = `I(${display(sub(m, 'p(0)+p(0)'))},x)`; }
             else if (m == 'P(0)') { s = 'M'; }
-            else if (lt(m, 'P(0)+P(0)')) { s = `M<sup>+${display(sub(m, "P(0)"))}</sup>`; }
             else if (m == 'P(P(0))') { s = 'N'; }
             else if (m == 'P(P(P(0)))') { s = 'K'; }
             if (s == '') { return `ψ(${display(arg(x))})`; }
