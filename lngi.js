@@ -129,7 +129,7 @@ function update() {
         document.getElementById("11").style.fontSize = (thing==0?"100%":"0%")
         document.getElementById("main_text").style.height = "20%"
         document.getElementById("anal").style.top = "55%"
-        smallUpdate(36)
+        smallUpdate(25)
     }
     mile_load()
     fps = 1000/(Date.now()-last_update)
